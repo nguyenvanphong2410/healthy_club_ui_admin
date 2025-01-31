@@ -1,0 +1,25 @@
+.iconGiftWrap {
+  .fa-primary {
+    @apply fill-black-55 #{!important};
+  }
+
+  .fa-secondary {
+    @apply fill-black-70 #{!important};
+  }
+}
+
+.main-card-course {
+  .ant-card-body {
+    @apply grow;
+  }
+}
+
+.ant-card {
+
+  .ant-card-head {
+    border-bottom: 1px solid #e0dddd;
+  }
+  .ant-card-body {
+    background-color: rgb(255, 255, 255) !important;
+  }
+}
