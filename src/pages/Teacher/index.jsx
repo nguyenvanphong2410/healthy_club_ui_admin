@@ -70,8 +70,8 @@ export default function Teacher() {
               />
             </div>
             <div className="flex">
-            <div className="mr-4">
-                {hasPermission([PERMISSIONS.LIST.LIST_STUDENT]) && (
+              <div className="mr-4">
+                {/* {hasPermission([PERMISSIONS.LIST.LIST_STUDENT]) && (
                   <Popover
                     content={<FilterPopoverTeacher />}
                     placement="bottomRight"
@@ -93,20 +93,20 @@ export default function Teacher() {
                       Bộ lọc
                     </Button>
                   </Popover>
+                )} */}
+              </div>
+              <div className={styles.action}>
+                {hasPermission([PERMISSIONS.ADD.ADD_TEACHER]) && (
+                  <Button
+                    icon={<InlineSVG src={PlusIcon} className={`w-4 h-4`} />}
+                    className={`md:flex items-center main-btn-primary h-full s:hidden`}
+                    size={'large'}
+                    onClick={() => openModalCreate()}
+                  >
+                    Tạo mới
+                  </Button>
                 )}
               </div>
-            <div className={styles.action}>
-              {hasPermission([PERMISSIONS.ADD.ADD_TEACHER]) && (
-                <Button
-                  icon={<InlineSVG src={PlusIcon} className={`w-4 h-4`} />}
-                  className={`md:flex items-center main-btn-primary h-full s:hidden`}
-                  size={'large'}
-                  onClick={() => openModalCreate()}
-                >
-                  Tạo mới
-                </Button>
-              )}
-            </div>
             </div>
           </div>
 
@@ -184,7 +184,7 @@ export default function Teacher() {
           title={'Khóa thể thao và lớp do huấn luyện viên phụ trách'}
           width={1200}
         >
-          <CourseAndClassOfTeacher dataCourseAndClassOfTeacher={dataCourseAndClassOfTeacher}/>
+          <CourseAndClassOfTeacher dataCourseAndClassOfTeacher={dataCourseAndClassOfTeacher} />
         </ModalDefault>
       </div>
     </MainLayout>

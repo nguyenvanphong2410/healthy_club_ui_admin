@@ -203,8 +203,7 @@ export default function Handle() {
       render: (text) => <p className={`text-center`}>{moment(text).format('HH:MM DD/MM/YYYY')}</p>,
     },
     customer_type === CUSTOMER_TYPE.CONFIRMED
-      ? (
-        {
+      ? {
           title: 'Trạng thái',
           dataIndex: 'status',
           key: 'status',
@@ -230,7 +229,7 @@ export default function Handle() {
               />
             </Tooltip>
           ),
-        })
+        }
       : {
           width: 1,
         },
@@ -250,7 +249,7 @@ export default function Handle() {
             <div>
               {customer_type === CUSTOMER_TYPE.CONFIRMED ? (
                 <div className={`btn-table-action`}>
-                  {hasPermission([PERMISSIONS.LIST.LIST_STUDENT]) && (
+                  {/* {hasPermission([PERMISSIONS.LIST.LIST_STUDENT]) && (
                     <Tooltip placement="top" title={'Xem khóa và lớp'}>
                       <div className={`btn-edit`} onClick={() => handleClickViewCourseAndClassOfStudent(record.courseAndClassOfStudent)}>
                         <InlineSVG src={IconEye} width={14} />
@@ -263,7 +262,7 @@ export default function Handle() {
                         <InlineSVG src={ResetPass} width={14} />
                       </div>
                     </Tooltip>
-                  )}
+                  )} */}
                   {hasPermission([PERMISSIONS.EDIT.EDIT_STUDENT]) && (
                     <Tooltip placement="top" title={'Cập nhật'}>
                       <div className={`btn-edit`} onClick={() => openModalEdit(record)}>

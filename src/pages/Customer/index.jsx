@@ -81,7 +81,7 @@ export default function CustomerManagement() {
 
             <div className="flex">
               <div className="mr-4">
-                {hasPermission([PERMISSIONS.LIST.LIST_STUDENT]) && (
+                {/* {hasPermission([PERMISSIONS.LIST.LIST_STUDENT]) && (
                   <Popover
                     content={<FilterPopoverCustomer />}
                     placement="bottomRight"
@@ -103,7 +103,7 @@ export default function CustomerManagement() {
                       Bộ lọc
                     </Button>
                   </Popover>
-                )}
+                )} */}
               </div>
               <div>
                 {hasPermission([PERMISSIONS.ADD.ADD_STUDENT]) && (

@@ -5,12 +5,12 @@ import { rootLoader } from './rootLoader.js';
 import Login from '../pages/Auth/Login';
 import ResetPassword from '../pages/Auth/ResetPassword';
 import Account from '../pages/Account/index.jsx';
-import Order from '../pages/Order/index.jsx';
+// import Order from '../pages/Order/index.jsx';
 import Config from '../pages/Config/index.jsx';
 import CustomerDetail from '../pages/CustomerDetail/index.jsx';
 import Course from '../pages/Course/index.jsx';
 import Customer from '@/pages/Customer';
-import General from '@/pages/General';
+// import General from '@/pages/General';
 import Permisssions from '@/pages/Permission';
 import { PAGE_ERROR, PERMISSIONS } from '@/utils/constants';
 import PageError from '@/components/Error';
@@ -19,7 +19,7 @@ import ConfigContact from '@/pages/ConfigContact';
 import ClassCpn from '@/pages/Class';
 import Teacher from '@/pages/Teacher';
 import DetailsCourse from '@/pages/DetailsCourse';
-import MyCalendar from '@/pages/MyCalendar';
+// import MyCalendar from '@/pages/MyCalendar';
 
 const router = createBrowserRouter([
   {
@@ -32,10 +32,19 @@ const router = createBrowserRouter([
     element: <ResetPassword />,
     loader: ({ request, params }) => rootLoader({ request, params }, false, 'LOAD_AUTH_PAGE'),
   },
+  // {
+  //   path: '',
+  //   element: <Home />,
+  //   loader: ({ request, params }) => rootLoader({ request, params }, true, 'LOAD_HOME_PAGE'),
+  // },
   {
     path: '',
-    element: <Home />,
-    loader: ({ request, params }) => rootLoader({ request, params }, true, 'LOAD_HOME_PAGE'),
+    element: <Course />,
+    loader: ({ request, params }) =>
+      rootLoader({ request, params }, true, 'LOAD_PACKAGE_PAGE', [
+        PERMISSIONS.SUPER_ADMIN,
+        PERMISSIONS.LIST.LIST_COURSE,
+      ]),
   },
   {
     path: 'course',
@@ -50,17 +59,14 @@ const router = createBrowserRouter([
     path: 'class',
     element: <ClassCpn />,
     loader: ({ request, params }) =>
-      rootLoader({ request, params }, true, 'LOAD_CLASS_PAGE', [
-        PERMISSIONS.SUPER_ADMIN,
-        PERMISSIONS.LIST.LIST_CLASS,
-      ]),
+      rootLoader({ request, params }, true, 'LOAD_CLASS_PAGE', [PERMISSIONS.SUPER_ADMIN, PERMISSIONS.LIST.LIST_CLASS]),
   },
-  {
-    path: '/order',
-    element: <Order />,
-    loader: ({ request, params }) =>
-      rootLoader({ request, params }, true, 'LOAD_ORDER_PAGE', [PERMISSIONS.SUPER_ADMIN, PERMISSIONS.LIST.LIST_ORDER]),
-  },
+  // {
+  //   path: '/order',
+  //   element: <Order />,
+  //   loader: ({ request, params }) =>
+  //     rootLoader({ request, params }, true, 'LOAD_ORDER_PAGE', [PERMISSIONS.SUPER_ADMIN, PERMISSIONS.LIST.LIST_ORDER]),
+  // },
   {
     path: '/customer',
     element: <Customer />,
@@ -109,9 +115,11 @@ const router = createBrowserRouter([
   {
     path: '/details-course/:id',
     element: <DetailsCourse />,
-    loader: ({request, params}) =>
-      rootLoader({request, params}, true, 'LOAD_DETAILS_COURSE_PAGE', [PERMISSIONS.SUPER_ADMIN,
-        PERMISSIONS.DETAIL.DETAIL_COURSE]),
+    loader: ({ request, params }) =>
+      rootLoader({ request, params }, true, 'LOAD_DETAILS_COURSE_PAGE', [
+        PERMISSIONS.SUPER_ADMIN,
+        PERMISSIONS.DETAIL.DETAIL_COURSE,
+      ]),
   },
   {
     path: '/permissions',
@@ -132,38 +140,39 @@ const router = createBrowserRouter([
     element: <PageError type={PAGE_ERROR.NOT_FOUND} title={'Trang bạn truy cập không tồn tại!'} />,
     loader: ({ request, params }) => rootLoader({ request, params }, true, ''),
   },
-  {
-    path: '/config',
-    element: <General />,
-    loader: ({ request, params }) => rootLoader({ request, params }, true, 'LOAD_GENERAL_CONGFIG_PAGE', [
-      PERMISSIONS.SUPER_ADMIN,
-      PERMISSIONS.LIST.LIST_CONFIG,
-    ]),
-  },
+  // {
+  //   path: '/config',
+  //   element: <General />,
+  //   loader: ({ request, params }) =>
+  //     rootLoader({ request, params }, true, 'LOAD_GENERAL_CONGFIG_PAGE', [
+  //       PERMISSIONS.SUPER_ADMIN,
+  //       PERMISSIONS.LIST.LIST_CONFIG,
+  //     ]),
+  // },
   {
     path: '/config/user-feedback',
     element: <UserFeedback />,
-    loader: ({ request, params }) => rootLoader(
-      { request, params }, true, 'LOAD_USER_FEEDBACK_PAGE', [
+    loader: ({ request, params }) =>
+      rootLoader({ request, params }, true, 'LOAD_USER_FEEDBACK_PAGE', [
         PERMISSIONS.SUPER_ADMIN,
         PERMISSIONS.LIST.LIST_CONFIG_FEEDBACK,
-      ]
-    )
+      ]),
   },
   {
     path: '/config/contact',
     element: <ConfigContact />,
-    loader: ({ request, params }) => rootLoader({ request, params }, true, 'LOAD_CONFIG_CONTACT_PAGE', [
-      PERMISSIONS.SUPER_ADMIN,
-      PERMISSIONS.LIST.LIST_CONFIG_CONTACT,
-    ]),
-  },
-  {
-    path: '/my-calendar',
-    element: <MyCalendar />,
     loader: ({ request, params }) =>
-      rootLoader({ request, params }, true, 'LOAD_MY_CALENDAR_PAGE', []),
+      rootLoader({ request, params }, true, 'LOAD_CONFIG_CONTACT_PAGE', [
+        PERMISSIONS.SUPER_ADMIN,
+        PERMISSIONS.LIST.LIST_CONFIG_CONTACT,
+      ]),
   },
+  // {
+  //   path: '/my-calendar',
+  //   element: <MyCalendar />,
+  //   loader: ({ request, params }) =>
+  //     rootLoader({ request, params }, true, 'LOAD_MY_CALENDAR_PAGE', []),
+  // },
 ]);
 
 export default router;

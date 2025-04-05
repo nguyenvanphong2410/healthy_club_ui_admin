@@ -45,7 +45,7 @@ export default function Handle() {
 
   const visibleModalCreateOrUpdate = useSelector((state) => state.teacher.visibleModalCreateOrUpdate);
   const visiblePopoverSelect = useSelector((state) => state.teacher.visiblePopoverSelect);
-  
+
   const teachers = useSelector((state) => state.teacher.teachers);
   const paginationListTeachers = useSelector((state) => state.teacher.paginationListTeachers);
   const isLoadingTableTeachers = useSelector((state) => state.teacher.isLoadingTableTeachers);
@@ -70,7 +70,7 @@ export default function Handle() {
       width: 110,
       showSorterTooltip: false,
       sorter: (a, b) => a.age - b.age,
-      render: (text) => <span className='font-semibold text-[#4d7ca8]'>{text}</span>
+      render: (text) => <span className="font-semibold text-[#4d7ca8]">{text}</span>,
     },
     {
       title: <span className="title-table">Họ và tên</span>,
@@ -104,79 +104,79 @@ export default function Handle() {
         );
       },
     },
-    {
-      title: 'Khóa thể thao',
-      dataIndex: '',
-      key: '',
-      align: 'center',
-      width: 180,
-      showSorterTooltip: false,
-      render: (text, record) => (
-        <div>
-          <span>
-            {record?.courseAndClass?.length > 0 ? (
-              record.courseAndClass?.map((item, index) => (
-                <Tag color="purple" key={index} className="mt-1">
-                  {item.course.name}
-                </Tag>
-              ))
-            ) : (
-              <span className={`text-[#909399] italic `}>---</span>
-            )}
-          </span>
-        </div>
-      ),
-    },
-    {
-      title: 'lớp thể thao',
-      dataIndex: '',
-      key: '',
-      align: 'center',
-      width: 180,
-      showSorterTooltip: false,
-      render: (text, record) => (
-        <div>
-          <span>
-            {record?.courseAndClass?.length > 0 ? (
-              record.courseAndClass?.map((item, courseIndex) => (
-                <div key={courseIndex}>
-                  {/* Hiển thị danh sách lớp */}
-                  {item.class?.map((classItem, classIndex) => (
-                    <Tag key={classIndex} color="default" className="mt-1">
-                      {classItem.name}
-                    </Tag>
-                  ))}
-                </div>
-              ))
-            ) : (
-              <span className={`text-[#909399] italic `}>---</span>
-            )}
-          </span>
-        </div>
-      ),
-    },
-    {
-      title: 'Vai trò',
-      dataIndex: 'role_ids',
-      key: 'role_ids',
-      align: 'center',
-      width: 250,
-      showSorterTooltip: false,
-      render: (text, record) => (
-        <span>
-          {record?.role_ids?.length > 0 ? (
-            record?.role_ids?.map((item, index) => (
-              <Tag color="default" key={index} className="mt-1">
-                {item.name}
-              </Tag>
-            ))
-          ) : (
-            <span className={`text-[#909399] italic `}>Đang cập nhật</span>
-          )}
-        </span>
-      ),
-    },
-    
+    // {
+    //   title: 'Khóa thể thao',
+    //   dataIndex: '',
+    //   key: '',
+    //   align: 'center',
+    //   width: 180,
+    //   showSorterTooltip: false,
+    //   render: (text, record) => (
+    //     <div>
+    //       <span>
+    //         {record?.courseAndClass?.length > 0 ? (
+    //           record.courseAndClass?.map((item, index) => (
+    //             <Tag color="purple" key={index} className="mt-1">
+    //               {item.course.name}
+    //             </Tag>
+    //           ))
+    //         ) : (
+    //           <span className={`text-[#909399] italic `}>---</span>
+    //         )}
+    //       </span>
+    //     </div>
+    //   ),
+    // },
+    // {
+    //   title: 'lớp thể thao',
+    //   dataIndex: '',
+    //   key: '',
+    //   align: 'center',
+    //   width: 180,
+    //   showSorterTooltip: false,
+    //   render: (text, record) => (
+    //     <div>
+    //       <span>
+    //         {record?.courseAndClass?.length > 0 ? (
+    //           record.courseAndClass?.map((item, courseIndex) => (
+    //             <div key={courseIndex}>
+    //               {/* Hiển thị danh sách lớp */}
+    //               {item.class?.map((classItem, classIndex) => (
+    //                 <Tag key={classIndex} color="default" className="mt-1">
+    //                   {classItem.name}
+    //                 </Tag>
+    //               ))}
+    //             </div>
+    //           ))
+    //         ) : (
+    //           <span className={`text-[#909399] italic `}>---</span>
+    //         )}
+    //       </span>
+    //     </div>
+    //   ),
+    // },
+    // {
+    //   title: 'Vai trò',
+    //   dataIndex: 'role_ids',
+    //   key: 'role_ids',
+    //   align: 'center',
+    //   width: 250,
+    //   showSorterTooltip: false,
+    //   render: (text, record) => (
+    //     <span>
+    //       {record?.role_ids?.length > 0 ? (
+    //         record?.role_ids?.map((item, index) => (
+    //           <Tag color="default" key={index} className="mt-1">
+    //             {item.name}
+    //           </Tag>
+    //         ))
+    //       ) : (
+    //         <span className={`text-[#909399] italic `}>Đang cập nhật</span>
+    //       )}
+    //     </span>
+    //   ),
+    // },
+
     {
       title: 'Giới tính',
       dataIndex: 'gender',
@@ -258,23 +258,23 @@ export default function Handle() {
           render: (text, record) => (
             <div>
               <div className={`btn-table-action`}>
-              {hasPermission([PERMISSIONS.LIST.LIST_TEACHER]) && (
-                    <Tooltip placement="top" title={'Xem khóa và lớp'}>
-                      <div className={`btn-edit`} onClick={() => handleClickViewCourseAndClassOfTeacher(record.courseAndClass)}>
-                        <InlineSVG src={IconEye} width={14} />
-                      </div>
-                    </Tooltip>
-                  )}
-                {hasPermission([PERMISSIONS.EDIT.EDIT_RESET_PASSWORD_TEACHER]) && (
-                  <Tooltip placement="bottom" title={'Thay đổi mật khẩu'}>
+                {/* {hasPermission([PERMISSIONS.LIST.LIST_TEACHER]) && (
+                  <Tooltip placement="top" title={'Xem khóa và lớp'}>
                     <div
-                      className={`btn-reset`}
-                      onClick={() => openModalResetPassword(record._id)}
+                      className={`btn-edit`}
+                      onClick={() => handleClickViewCourseAndClassOfTeacher(record.courseAndClass)}
                     >
+                      <InlineSVG src={IconEye} width={14} />
+                    </div>
+                  </Tooltip>
+                )} */}
+                {/* {hasPermission([PERMISSIONS.EDIT.EDIT_RESET_PASSWORD_TEACHER]) && (
+                  <Tooltip placement="bottom" title={'Thay đổi mật khẩu'}>
+                    <div className={`btn-reset`} onClick={() => openModalResetPassword(record._id)}>
                       <InlineSVG src={ResetPass} width={14} />
                     </div>
                   </Tooltip>
-                )}
+                )} */}
                 {hasPermission([PERMISSIONS.EDIT.EDIT_TEACHER]) && (
                   <Tooltip placement="bottom" title={'Cập nhật'}>
                     <div className={`btn-edit`} onClick={() => openModalEdit(record)}>
@@ -347,7 +347,9 @@ export default function Handle() {
     dispatch(handleGetRoles());
 
     handleToggleVisibleModalCreateOrUpdate();
-    dispatch(setInForTeacher({ ...teacher, avatarUrl: teacher.avatar, role_ids: teacher?.role_ids?.map((item) => item._id) }));
+    dispatch(
+      setInForTeacher({ ...teacher, avatarUrl: teacher.avatar, role_ids: teacher?.role_ids?.map((item) => item._id) })
+    );
   };
 
   const openModalDelete = (teacher) => {
@@ -457,13 +459,13 @@ export default function Handle() {
   };
 
   const handleClickViewCourseAndClassOfTeacher = (courseAndClass) => {
-    dispatch(setVisibleModalCourseAndClassOfTeacher(true))
-    setDataCourseAndClassOfTeacher(courseAndClass)
-  }
+    dispatch(setVisibleModalCourseAndClassOfTeacher(true));
+    setDataCourseAndClassOfTeacher(courseAndClass);
+  };
 
   const handleCancelModalCourseAndClassOfTeacher = () => {
-    dispatch(setVisibleModalCourseAndClassOfTeacher(false))
-  }
+    dispatch(setVisibleModalCourseAndClassOfTeacher(false));
+  };
 
   const handleShowPopoverSelect = () => {
     dispatch(setVisiblePopoverSelect(true));

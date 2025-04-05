@@ -61,7 +61,7 @@ export default function Handle() {
       width: 180,
       showSorterTooltip: false,
       sorter: (a, b) => a.age - b.age,
-      render: (text) => <span className='font-semibold text-[#4d7ca8]'>{text}</span>
+      render: (text) => <span className="font-semibold text-[#4d7ca8]">{text}</span>,
     },
     {
       title: <span className="title-table">Họ và tên</span>,
@@ -196,7 +196,7 @@ export default function Handle() {
           render: (text, record) => (
             <div>
               <div className={`btn-table-action`}>
-                {hasPermission([PERMISSIONS.EDIT.EDIT_RESET_PASSWORD_EMPLOYEE]) && (
+                {/* {hasPermission([PERMISSIONS.EDIT.EDIT_RESET_PASSWORD_EMPLOYEE]) && (
                   <Tooltip placement="bottom" title={'Thay đổi mật khẩu'}>
                     <div
                       className={`btn-reset`}
@@ -205,7 +205,7 @@ export default function Handle() {
                       <InlineSVG src={ResetPass} width={14} />
                     </div>
                   </Tooltip>
-                )}
+                )} */}
                 {hasPermission([PERMISSIONS.EDIT.EDIT_EMPLOYEE]) && (
                   <Tooltip placement="bottom" title={'Cập nhật'}>
                     <div className={`btn-edit`} onClick={() => openModalEdit(record)}>
